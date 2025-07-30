@@ -1,0 +1,24 @@
+# Dependency directories
+# This is the most important one!
+node_modules/
+
+# Logs
+# These are often created by npm or yarn on errors.
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+# Never commit your secrets!
+.env
+.env.local
+
+# IDEs and editor directories
+.idea/
+.vscode/
+
+# Operating System files
+.DS_Store
+Thumbs.db

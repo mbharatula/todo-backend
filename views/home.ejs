@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link href="/public/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/public/images/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>My Tasks</h1>
+        <form id="task-form" method="POST" action="/add-task">
+            <input class="form-input" type="text" name="taskTitle" placeholder="Enter task title..." required>
+            <textarea class="form-textarea" name="taskDesc" placeholder="Enter task description..."></textarea>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+        <div class="task-list">
+            <%for(let task of tasks){  %>
+                <div class="task-item">
+                    <div class="task-content">
+                        <div class="task-title"> <%=task.title%> </div>
+                        <div class="task-desc"> <%=task.desc%> </div>
+                    </div>
+                    <div class="task-actions">
+                        <a href="/view-details/<%=task.id%>" class="btn btn-secondary">View</a>
+                        <form method="POST" action="/task-done/<%=task.id%>">
+                            <button type="submit" class="btn btn-success">Complete</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <a href="/completed-tasks" class="btn btn-link">View Completed Tasks</a>
+    </div>
+<script>
+    const form = document.getElementById('task-form');
+    const title = document.querySelector('.form-input');
+    function dataValidation(event) {
+        const titleValue = title.value.trim();
+        if (titleValue === "") {
+            event.preventDefault();
+            alert("Please Enter The Name Of your task");
+            title.focus();
+        }
+    }
+    form.addEventListener("submit", dataValidation);
+</script>
+</body>
+</html>

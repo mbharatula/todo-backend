@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    {
+      "id":"1a2b3c",
+      "title": "Welcome to TO-DO",
+      "desc": "This is a simple application"
+    }
+  ],
+  "completedTasks": []
+}

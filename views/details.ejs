@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" type="image/png" href="/public/images/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Details</h1>
+        <div class="details-content">
+            <div class="task-title"><%= task.title %></div>
+            <div class="task-desc"><%= task.desc %></div>
+        </div>
+        <div class="task-actions">
+            <a href="/edit-task/<%= task.id %>" class="btn btn-secondary">Edit Task</a>
+            <form method="POST" action="/delete-task/<%=task.id%>?_method=DELETE">
+                <button type="submit" class="btn btn-danger">Delete Task</button>
+            </form>
+            <a href="/" class="btn btn-link">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

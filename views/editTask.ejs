@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" type="image/png" href="/public/images/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Task</h1>
+        <form id="task-edit-form" method="POST" action="/edit-task/<%= task.id %>?_method=PATCH">
+            <input class="form-input" type="text" name="taskTitle" value="<%= task.title %>" required>
+            <textarea class="form-textarea" name="taskDesc"><%= task.desc %></textarea>
+            <div class="task-actions">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="/view-details/<%=task.id%>" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('task-edit-form');
+        const title = document.querySelector('.form-input');
+        function dataValidation(event) {
+            const titleValue = title.value.trim();
+            if (titleValue === "") {
+                event.preventDefault();
+                alert("Please Enter The Name Of your task");
+                title.focus();
+            }
+        }
+    form.addEventListener("submit", dataValidation);
+    </script>
+</body>
+</html>
